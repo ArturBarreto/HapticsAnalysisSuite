@@ -22,6 +22,7 @@ namespace Haptics.UI
         private TabControl tabPlots = new TabControl();
         private TabPage tabTime = new TabPage("Time Series");
         private TabPage tabFxD = new TabPage("Force vs Distance");
+        private TabPage tabAbout = new TabPage("About");
 
         private DataPoint[]? _data;
         private HapticMetrics? _metrics;
@@ -90,6 +91,35 @@ namespace Haptics.UI
             tabPlots.Dock = DockStyle.Fill;
             tabPlots.TabPages.Add(tabTime);
             tabPlots.TabPages.Add(tabFxD);
+
+            // --- ABOUT TAB ---
+            var aboutText = new TextBox
+            {
+                Multiline = true,
+                ReadOnly = true,
+                Dock = DockStyle.Fill,
+                Font = new Font("Segoe UI", 11f),
+                ScrollBars = ScrollBars.Vertical,
+                Text =
+            @"Haptics Analysis Tool
+----------------------
+
+This application loads acquisition data from CSV files,
+and calculates haptic metrics (Fa, Fra, Frr, ΔF, Tm, etc.)
+with interactive plots (Time Series and Force vs Distance).
+
+Author: Artur Gomes Barreto
+Email: artur.gomes.barreto@gmail.com
+LinkedIn: https://www.linkedin.com/in/ArturGomesBarreto
+GitHub: https://github.com/ArturBarreto/HapticsDataAcquisition/
+WhatsApp: +356 7756 2008
+
+Version: 1.0
+Built with C# (.NET 8) + ScottPlot v5"
+            };
+
+            tabAbout.Controls.Add(aboutText);
+            tabPlots.TabPages.Add(tabAbout);
 
             // --- MAIN SPLIT: left (plots) / right (controls+metrics) ---
             mainSplit.Dock = DockStyle.Fill;
@@ -273,6 +303,18 @@ Threshold  : {_metrics.ThresholdUsed:F3} V";
 
             plotTime.Plot.Title("Force & Voltage vs Index");
 
+            // ----- Improve fonts and legend -----
+            plotTime.Plot.Axes.Left.Label.FontSize = 26;
+            plotTime.Plot.Axes.Bottom.Label.FontSize = 26;
+            plotTime.Plot.Axes.Right.Label.FontSize = 26;
+
+            plotTime.Plot.Axes.Left.TickLabelStyle.FontSize = 22;
+            plotTime.Plot.Axes.Bottom.TickLabelStyle.FontSize = 22;
+            plotTime.Plot.Axes.Right.TickLabelStyle.FontSize = 22;
+
+            plotTime.Plot.Legend.IsVisible = true;
+            plotTime.Plot.Legend.FontSize = 14;
+
             if (_metrics != null)
             {
                 // Fa marker line
@@ -334,6 +376,18 @@ Threshold  : {_metrics.ThresholdUsed:F3} V";
             plotFxD.Plot.YLabel("Force (N)");
             plotFxD.Plot.Title("Force vs Distance");
             plotFxD.Plot.Legend.IsVisible = true;
+
+            // ----- Improve fonts and legend -----
+            plotFxD.Plot.Axes.Left.Label.FontSize = 26;
+            plotFxD.Plot.Axes.Bottom.Label.FontSize = 26;
+            plotFxD.Plot.Axes.Right.Label.FontSize = 26;
+
+            plotFxD.Plot.Axes.Left.TickLabelStyle.FontSize = 22;
+            plotFxD.Plot.Axes.Bottom.TickLabelStyle.FontSize = 22;
+            plotFxD.Plot.Axes.Right.TickLabelStyle.FontSize = 22;
+
+            plotFxD.Plot.Legend.IsVisible = true;
+            plotFxD.Plot.Legend.FontSize = 14;
 
             // ----- Markers: Fa, Fra, Frr -----
             if (_metrics != null)

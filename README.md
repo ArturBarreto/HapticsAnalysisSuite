@@ -1,7 +1,6 @@
-# 🧰 Haptics Analysis Suite (WinForms, .NET 8)
+# 🧰 Haptics Analysis Suite
 
-A Windows desktop application to **load haptic acquisition data**, **plot it**, and **compute key haptic characteristics** (Fa, Fra, Frr, ΔF, Tm).  
-This project was developed as a **technical assignment for Methode Electronics**, fulfilling Task 1 requirements (data loading, plotting, secondary plots, and metrics) and presented with a clean, user-friendly UI.
+A Windows desktop application to **load haptic acquisition data**, **plot it**, and **compute key haptic characteristics** (Fa, Fra, Frr, ΔF, Tm).   This project was developed as a **technical assignment for Methode Electronics**, fulfilling Task 1 requirements (data loading, plotting, secondary plots, and metrics) and presented with a clean, user-friendly UI.
 
 ---
 

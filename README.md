@@ -83,6 +83,22 @@ dotnet run --project Haptics.UI
 
 ---
 
+## 🧪 Tests
+
+```bash
+dotnet test
+```
+
+The test suite (`Haptics.Tests`) validates that:
+- CSV loads successfully
+- Metrics are within **reasonable tolerances** on the sample dataset:
+  - Fa, Fra, **Tm ≈ 2.286 mm**, **Frr ≈ −0.106 N**, **ΔF ≈ 1.304 N**
+  - Voltage medians (**High ≈ 8.412 V**, **Low ≈ 1.976 V**) and the chosen **Threshold** (midpoint)
+
+> Coverage collection is enabled via `coverlet.collector`.
+
+---
+
 ## 💡 Using the App
 
 1. **Load CSV…** → pick your acquisition file
@@ -113,22 +129,6 @@ Implemented in `HapticsAnalyzer`:
 - **ΔF** = `Fa − Fra`
 
 All values are surfaced via `HapticMetrics` and used to place **marker pins** (with labels) on the plots.
-
----
-
-## 🧪 Tests
-
-```bash
-dotnet test
-```
-
-The test suite (`Haptics.Tests`) validates that:
-- CSV loads successfully
-- Metrics are within **reasonable tolerances** on the sample dataset:
-  - Fa, Fra, **Tm ≈ 2.286 mm**, **Frr ≈ −0.106 N**, **ΔF ≈ 1.304 N**
-  - Voltage medians (**High ≈ 8.412 V**, **Low ≈ 1.976 V**) and the chosen **Threshold** (midpoint)
-
-> Coverage collection is enabled via `coverlet.collector`.
 
 ---
 
